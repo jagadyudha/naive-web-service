@@ -33,3 +33,9 @@ def naive():
     Y_predict = nbtrain.predict(x_test)
     result = data + [{"prediction":Y_predict[0]}]
     return make_response(jsonify(result))
+
+@app.route('/test', methods=['POST'])
+def test():
+    data = [request.json]
+    result = data
+    return make_response(jsonify(result))
