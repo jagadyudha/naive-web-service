@@ -15,7 +15,7 @@ def home():
 @app.route('/naive', methods=['POST'])
 def naive():
     data = [request.json]
-    data_training = pd.read_excel("https://github.com/jagadyudha/market-segmentation-prediction/blob/master/data_training.xlsx?raw=true")
+    data_training = pd.read_excel("https://github.com/jagadyudha/market-segmentation-prediction/blob/master/data_training.xls?raw=true")
     enc = LabelEncoder()
     data_training['Gender'] = enc.fit_transform(data_training['Gender'].values)
     data_training['Ever_Married'] = enc.fit_transform(data_training['Ever_Married'].values)
@@ -37,6 +37,6 @@ def naive():
 @app.route('/test', methods=['POST'])
 def test():
     data = [request.json]
-    data_training = pd.read_excel("https://github.com/jagadyudha/market-segmentation-prediction/blob/master/data_training.xlsx?raw=true")
+    data_training = pd.read_excel("https://github.com/jagadyudha/market-segmentation-prediction/blob/master/data_training.xls?raw=true")
     d = data_training.to_dict(orient='records')
     return make_response(jsonify(d))
