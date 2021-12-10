@@ -3,7 +3,6 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from flask import jsonify, make_response
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import classification_report
 from flask import request
 
 app = Flask(__name__)
@@ -33,4 +32,4 @@ def naive():
     nbtrain = modelnb.fit(x, y)
     Y_predict = nbtrain.predict(x_test)
     result = data + [{"prediction":Y_predict[0]}]
-    return jsonify(result)
+    return make_response(jsonify(result))
