@@ -37,5 +37,6 @@ def naive():
 @app.route('/test', methods=['POST'])
 def test():
     data = [request.json]
-    result = data
-    return make_response(jsonify(result))
+    data_training = pd.read_excel("data_training.xlsx")
+    d = data_training.to_dict(orient='records')
+    return make_response(jsonify(d))
